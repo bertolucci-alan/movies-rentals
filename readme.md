@@ -11,11 +11,20 @@
 9 - routing-controllers
 
 //injetar repositórios nos useCases ou useCases nos controllers
-10 - tsyringe: Registrar singleton para injeção de dependências
+10 - tsyringe: Registrar singleton para injeção de dependências✅
+
+11 - bcrypt✅
+
+//tratamento próprio de erros
+12 - express-async-errors✅
 
 Notas:
 - Sempre usar async / await para requisições no DB ou para filhos req DB
 - Promise -> Promessa, um valor que pode vir ou não.
+
+- Para amanhã 21/07/2022
+
+Incerir class-validator, Body()
 
 -->
 
