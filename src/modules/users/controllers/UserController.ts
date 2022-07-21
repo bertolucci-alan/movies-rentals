@@ -8,13 +8,8 @@ import { CreateUserUseCase } from "../useCases/createUser/CreateUserUseCase";
 @JsonController("/users")
 export class UserController {
     @Post("/")
-    async create(@Body() body: CreateUserDTO) {
+    async create(@Body() body: CreateUserDTO): Promise<User> {
         const createUserUseCase = container.resolve(CreateUserUseCase);
         return await createUserUseCase.execute(body);
-    }
-
-    @Get("/")
-    async index(request: Request, response: Response): Promise<any> {
-        return "teste";
     }
 }

@@ -1,9 +1,6 @@
 import express, {Express} from 'express';
 import { routes } from './routes';
 
-import { Request, Response, NextFunction } from "express";
-import { AppError } from "./shared/errors/AppError";
-
 //iniciando app e uses
 class App {
     public app: Express = express();
