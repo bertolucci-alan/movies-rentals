@@ -1,4 +1,5 @@
 import { User } from "@prisma/client";
+import { hash } from "bcrypt";
 import { inject, injectable } from "tsyringe";
 import prismaClient from "../../../../prisma";
 import { ICreateUserDTO } from "../../dtos/ICreteUserDTO";
@@ -16,7 +17,10 @@ export class CreateUserUseCase {
         if(userAlredyExist) {
             throw new Error("User already exists!");
         }
-        const user = await this.userRepository.create({name, email, password});
+
+        const passwordHash = await hash(password, 8);
+
+        const user = await this.userRepository.create({name, email, password: passwordHash});
         return user;
     }
 }
