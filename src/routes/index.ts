@@ -1,8 +1,14 @@
-import { Router } from "express";
-import { userRoutes } from "./user.routes";
+import { Express } from "express";
+import { useExpressServer, RoutingControllersOptions } from "routing-controllers";
+import path from 'path';
 
-const routes = Router();
-
-routes.use("/users", userRoutes);
-
-export { routes };
+//criando configurações de rotas
+export const routes = (app: Express): Express => {
+    const options: RoutingControllersOptions = {
+        controllers: [
+            path.join(__dirname, '..', '/modules/**/controllers/*{.ts,.js}' ),
+        ]
+    };
+    useExpressServer(app, options);
+    return app;
+}
