@@ -5,6 +5,7 @@ import path from 'path';
 //criando configurações de rotas
 export const routes = (app: Express): Express => {
     const options: RoutingControllersOptions = {
+        routePrefix: "/api",
         controllers: [
             path.join(__dirname, '..', '/modules/**/controllers/*{.ts,.js}' ),
         ]

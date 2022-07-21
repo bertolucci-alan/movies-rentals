@@ -3,7 +3,7 @@ import { hash } from "bcrypt";
 import { inject, injectable } from "tsyringe";
 import prismaClient from "../../../../prisma";
 import { AppError } from "../../../../shared/container/errors/AppError";
-import { ICreateUserDTO } from "../../dtos/ICreteUserDTO";
+import { CreateUserDTO } from "../../dtos/CreteUserDTO";
 import { IUserRepository } from "../../repositories/interfaces/IUserRepository";
 
 @injectable()
@@ -13,7 +13,7 @@ export class CreateUserUseCase {
         private userRepository: IUserRepository
     ) {}
 
-    async execute({name, email, password}: ICreateUserDTO): Promise<User> {
+    async execute({name, email, password}: CreateUserDTO): Promise<User> {
         const userAlredyExist = await this.userRepository.findByEmail(email);
         if(userAlredyExist) {
             throw new AppError("User already exists!");
