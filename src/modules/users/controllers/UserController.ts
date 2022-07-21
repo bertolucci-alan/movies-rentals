@@ -1,20 +1,19 @@
+import { User } from "@prisma/client";
 import { Request, Response } from "express";
-import { Get, JsonController, Post } from "routing-controllers";
+import { Body, Get, JsonController, Post } from "routing-controllers";
 import { container } from "tsyringe";
+import { CreateUserDTO } from "../dtos/CreteUserDTO";
 import { CreateUserUseCase } from "../useCases/createUser/CreateUserUseCase";
 
 @JsonController("/users")
 export class UserController {
     @Post("/")
-    async create(request: Request, response: Response) {
-        const {name, email, password} = request.body;
+    async create(@Body() body: CreateUserDTO) {
         const createUserUseCase = container.resolve(CreateUserUseCase);
-        const user = await createUserUseCase.execute({name, email, password});
-
-        return response.status(201).json(user);
+        return await createUserUseCase.execute(body);
     }
 
-    @Get("/users")
+    @Get("/")
     async index(request: Request, response: Response): Promise<any> {
         return "teste";
     }

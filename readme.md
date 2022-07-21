@@ -5,10 +5,10 @@
 3 - Rodar migration✅
 4 - Criar Repositories e Interfaces✅
 5 - Dtos✅
-6 - class-validator
+6 - class-validator✅
 7 - Criar cases✅
 8 - Criar Controllers✅
-9 - routing-controllers
+9 - routing-controllers✅
 
 //injetar repositórios nos useCases ou useCases nos controllers
 10 - tsyringe: Registrar singleton para injeção de dependências✅
@@ -18,13 +18,18 @@
 //tratamento próprio de erros
 12 - express-async-errors✅
 
+13 - ValidationErrors✅
+
+14- http-status-codes✅
+
+
 Notas:
 - Sempre usar async / await para requisições no DB ou para filhos req DB
 - Promise -> Promessa, um valor que pode vir ou não.
 
 - Para amanhã 21/07/2022
 
-Incerir class-validator, Body()
+Inserir class-validator, Body()✅
 
 -->
 
