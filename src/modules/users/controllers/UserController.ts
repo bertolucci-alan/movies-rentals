@@ -1,6 +1,5 @@
 import { User } from "@prisma/client";
-import { Request, Response } from "express";
-import { Body, Get, JsonController, Post } from "routing-controllers";
+import { Body, JsonController, Post } from "routing-controllers";
 import { container } from "tsyringe";
 import { CreateUserDTO } from "../dtos/CreteUserDTO";
 import { CreateUserUseCase } from "../useCases/createUser/CreateUserUseCase";
