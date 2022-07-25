@@ -1,4 +1,6 @@
 import { container } from "tsyringe";
+import { GenreRepository } from "../../modules/genres/repositories/GenreRepository";
+import { IGenreRepository } from "../../modules/genres/repositories/interfaces/IGenreRepository";
 import { IUserRepository } from "../../modules/users/repositories/interfaces/IUserRepository";
 import { UserRepository } from "../../modules/users/repositories/UserRepository";
 
@@ -7,4 +9,9 @@ import { UserRepository } from "../../modules/users/repositories/UserRepository"
 container.registerSingleton<IUserRepository>(
     "UserRepository",
     UserRepository
+);
+
+container.register<IGenreRepository>(
+    "GenreRepository",
+    GenreRepository
 );
