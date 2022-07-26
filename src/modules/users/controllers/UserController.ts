@@ -1,6 +1,7 @@
 import { User } from "@prisma/client";
-import { Body, JsonController, Post } from "routing-controllers";
+import { Body, Get, JsonController, Post, QueryParams } from "routing-controllers";
 import { container } from "tsyringe";
+import { ListGenresUseCase } from "../../genres/useCases/listGenres/ListGenresUseCase";
 import { CreateUserDTO } from "../dtos/CreteUserDTO";
 import { CreateUserUseCase } from "../useCases/createUser/CreateUserUseCase";
 
