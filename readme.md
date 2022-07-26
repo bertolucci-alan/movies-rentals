@@ -22,6 +22,13 @@
 
 14- http-status-codes✅
 
+// O que falta fazer para finalizar
+- Criação de repo, useCase, controller para rentals
+- Finalização do CRUD para users
+- Finalização do CRUD para movies
+- Finalização do CRUD para genres
+- Finalização do CRUD para movies_image
+
 
 Notas:
 - Sempre usar async / await para requisições no DB ou para filhos req DB

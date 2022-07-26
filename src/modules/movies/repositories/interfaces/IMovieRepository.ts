@@ -5,6 +5,7 @@ import { CreateMovieDTO } from "../../dtos/CreateMovieDTO";
 export interface IMovieRepository {
     create(body: CreateMovieDTO): Promise<Movies>;
     findByName(name: string): Promise<Movies>;
+    findById(id: string): Promise<Movies>;
     findAll({name, genre_id}: IRequestFindAllMovie): Promise<Movies[]>;
 }
 
