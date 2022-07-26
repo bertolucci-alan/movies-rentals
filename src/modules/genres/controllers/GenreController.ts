@@ -22,7 +22,7 @@ export class GenreController {
    }
 
    @Get("/teste")
-   async list(@QueryParams() param?: string): Promise<Genre[]> {
+   async index(@QueryParams() param?: string): Promise<Genre[]> {
       const listGenresUseCase = container.resolve(ListGenresUseCase);
       return await listGenresUseCase.execute();
    }

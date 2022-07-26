@@ -23,4 +23,9 @@ export class MovieRepository implements IMovieRepository {
         const movie = await prismaClient.movies.findFirst({where: {name}});
         return movie as Movies;
     }
+
+    async findAll(): Promise<Movies[]> {
+        const movies = await prismaClient.movies.findMany();
+        return movies;
+    }
 }
