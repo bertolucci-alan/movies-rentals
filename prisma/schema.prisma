@@ -26,5 +26,22 @@ model Genre {
   name        String
   created_at  DateTime @default(now())
 
+  movies Movies[]
+
   @@map("genres")
+}
+
+model Movies {
+  id          String @id @default(uuid())
+  name        String
+  description String
+  daily_rate  Float
+  fine_amount Float
+  available   Boolean
+  genre_id    String
+  created_at  DateTime @default(now())
+
+  @@map("movies")
+  genre Genre @relation(fields: [genre_id], references: [id])
+
 }
