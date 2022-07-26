@@ -6,6 +6,7 @@ import { ListGenresUseCase } from "../../genres/useCases/listGenres/ListGenresUs
 import { CreateUserDTO } from "../dtos/CreteUserDTO";
 import { UpdateUserDTO } from "../dtos/UpdateUserDTO";
 import { CreateUserUseCase } from "../useCases/createUser/CreateUserUseCase";
+import { ListUsersUseCase } from "../useCases/listUsers/ListUsersUseCase";
 import { UpdateUserUseCase } from "../useCases/updateUser/UpdateUserUseCase";
 
 @JsonController("/users")
@@ -20,9 +21,15 @@ export class UserController {
     @Put("/")
     async update(
         @Body() body: UpdateUserDTO,
-        @CurrentUser() authId: Session
+        @CurrentUser() authUser: Session
     ): Promise<User> {
         const updateUserUseCase = container.resolve(UpdateUserUseCase);
-        return await updateUserUseCase.execute(body, authId.id);
+        return await updateUserUseCase.execute(body, authUser.id);
+    }
+
+    @Get("/")
+    async index(@CurrentUser() authUser: Session): Promise<User[]> {
+        const listUsersUseCase = container.resolve(ListUsersUseCase);
+        return await listUsersUseCase.execute(authUser.id);
     }
 }
