@@ -43,5 +43,16 @@ model Movies {
 
   @@map("movies")
   genre Genre @relation(fields: [genre_id], references: [id])
+  movieImage MovieImage?
 
+}
+
+model MovieImage {
+  id          String @id @default(uuid())
+  movie_id    String @unique 
+  image_name  String
+  created_at  DateTime @default(now())
+
+  @@map("movies_image")
+  movies Movies @relation(fields: [movie_id], references: [id])
 }
