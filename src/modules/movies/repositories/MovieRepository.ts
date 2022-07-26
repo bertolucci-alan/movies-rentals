@@ -1,7 +1,7 @@
 import { Movies } from "@prisma/client";
 import prismaClient from "../../../prisma";
 import { CreateMovieDTO } from "../dtos/CreateMovieDTO";
-import { IMovieRepository } from "./interfaces/IMovieRepository";
+import { IMovieRepository, IRequestFindAllMovie } from "./interfaces/IMovieRepository";
 
 
 export class MovieRepository implements IMovieRepository {
@@ -24,8 +24,16 @@ export class MovieRepository implements IMovieRepository {
         return movie as Movies;
     }
 
-    async findAll(): Promise<Movies[]> {
-        const movies = await prismaClient.movies.findMany();
-        return movies;
+    async findAll({name, genre_id}: IRequestFindAllMovie): Promise<Movies[]> {
+        const availableMovies = await prismaClient.movies.findMany({where: {available: true}});
+        if(name) {
+            const movies = availableMovies.filter((movie) => movie.name === name);
+            return movies;
+        }
+        else if(genre_id) {
+            const movies = availableMovies.filter((movie) => movie.genre_id === genre_id);
+            return movies;
+        }
+        return availableMovies;
     }
 }

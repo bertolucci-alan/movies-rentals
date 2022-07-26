@@ -1,6 +1,6 @@
 import { Movies } from "@prisma/client";
 import { inject, injectable } from "tsyringe";
-import { IMovieRepository } from "../../repositories/interfaces/IMovieRepository";
+import { IMovieRepository, IRequestFindAllMovie } from "../../repositories/interfaces/IMovieRepository";
 
 @injectable()
 export class ListMoviesUseCase {
@@ -9,8 +9,8 @@ export class ListMoviesUseCase {
         private movieRepository: IMovieRepository
     ){}
 
-    async execute(): Promise<Movies[]> {
-        const movies = await this.movieRepository.findAll();
+    async execute({name, genre_id}: IRequestFindAllMovie): Promise<Movies[]> {
+        const movies = await this.movieRepository.findAll({name, genre_id});
         return movies;
     }
 }
