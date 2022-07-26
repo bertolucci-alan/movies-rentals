@@ -23,7 +23,7 @@
 14- http-status-codes✅
 
 // O que falta fazer para finalizar
-- Criação de repo, useCase, controller para rentals
+- Criação de repo, useCase, controller para rentals✅
 - Finalização do CRUD para users
 - Finalização do CRUD para movies
 - Finalização do CRUD para genres

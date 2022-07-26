@@ -2,6 +2,7 @@ import { User } from "@prisma/client";
 import prismaClient from "../../../prisma";
 import { Session } from "../../../shared/types/Session";
 import { CreateUserDTO } from "../dtos/CreteUserDTO";
+import { UpdateUserDTO } from "../dtos/UpdateUserDTO";
 import { IUserRepository } from "./interfaces/IUserRepository";
 
 
@@ -13,6 +14,18 @@ export class UserRepository implements IUserRepository {
                 email,
                 password,
                 isAdmin: false
+            }
+        });
+        return user;
+    }
+
+    async update({name, email, password}: UpdateUserDTO, id: string ): Promise<User> {
+        const user = await prismaClient.user.update({
+            where: {id},
+            data: {
+                name,
+                email,
+                password
             }
         });
         return user;
