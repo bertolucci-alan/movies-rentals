@@ -47,4 +47,10 @@ export class UserRepository implements IUserRepository {
         const users = await prismaClient.user.findMany();
         return users;
     }
+
+    async delete(id: string): Promise<User> {
+        const rentals = await prismaClient.rental.deleteMany({where: {user_id: id}})
+        const user = await prismaClient.user.delete({where: {id}});
+        return user;
+    }
 }
