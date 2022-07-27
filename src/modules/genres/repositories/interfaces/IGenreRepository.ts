@@ -7,5 +7,6 @@ export interface IGenreRepository {
     update({name}: UpdateGenreDTO, id: string): Promise<Genre>;
     findByName(name: string): Promise<Genre>;
     findById(id: string): Promise<Genre>;
-    findAll(): Promise<Genre[]>
+    findAll(): Promise<Genre[]>;
+    delete(id: string): Promise<Genre>;
 }

@@ -34,4 +34,14 @@ export class GenreRepository implements IGenreRepository {
         const genres = await prismaClient.genre.findMany();
         return genres;
     }
+
+    async delete(id: string): Promise<Genre> {
+        const movies = await prismaClient.movies.findMany({where: {genre_id: id}});
+        for (const movie of movies) {
+            await prismaClient.rental.deleteMany({where: {movie_id: movie.id}});
+        }
+        await prismaClient.movies.deleteMany({where: {genre_id: id}});
+        const genre = await prismaClient.genre.delete({where: {id}});
+        return genre;
+    }
 }
