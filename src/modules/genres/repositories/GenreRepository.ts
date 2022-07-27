@@ -1,6 +1,7 @@
 import { Genre } from "@prisma/client";
 import prismaClient from "../../../prisma";
 import { CreateGenreDTO } from "../dtos/CreateGenreDTO";
+import { UpdateGenreDTO } from "../dtos/UpdateGenreDTO";
 import { IGenreRepository } from "./interfaces/IGenreRepository";
 
 
@@ -11,6 +12,11 @@ export class GenreRepository implements IGenreRepository {
                 name
             }
         });
+        return genre;
+    }
+
+    async update({ name }: UpdateGenreDTO, id: string): Promise<Genre> {
+        const genre = await prismaClient.genre.update({where: {id}, data:{name}});
         return genre;
     }
 
